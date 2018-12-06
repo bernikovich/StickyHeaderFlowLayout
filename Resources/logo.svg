@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="100px" height="80px" viewBox="0 0 100 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="70px" height="70px" viewBox="0 0 70 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
     <title>Artboard</title>
     <desc>Created with Sketch.</desc>
     <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Rectangle" fill="#F43457" x="15" y="5" width="30" height="40" rx="4"></rect>
-        <rect id="Rectangle" fill="#666666" x="55" y="35" width="30" height="40" rx="4"></rect>
-        <rect id="Rectangle" fill="#666666" x="15" y="55" width="30" height="20" rx="4"></rect>
-        <rect id="Rectangle" fill="#F43457" x="55" y="5" width="30" height="20" rx="4"></rect>
+        <rect id="Rectangle" fill="#F43457" x="0" y="0" width="30" height="40" rx="4"></rect>
+        <rect id="Rectangle" fill="#666666" x="40" y="30" width="30" height="40" rx="4"></rect>
+        <rect id="Rectangle" fill="#666666" x="0" y="50" width="30" height="20" rx="4"></rect>
+        <rect id="Rectangle" fill="#F43457" x="40" y="0" width="30" height="20" rx="4"></rect>
     </g>
 </svg>
