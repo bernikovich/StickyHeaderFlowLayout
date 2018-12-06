@@ -7,6 +7,7 @@ Pod::Spec.new do |spec|
   spec.author        = { "Timur Bernikowich" => "bernikowich@icloud.com" }
   spec.platform      = :ios, "8.0"
   spec.swift_version = "4.2"
+  spec.framework     = "UIKit"
   spec.source        = { :git => "https://github.com/bernikowich/StickyHeaderFlowLayout.git", :tag => "#{s.version}" }
   spec.source_files  = "StickyHeaderFlowLayout/Classes/*.{h,m}"
   spec.module_name   = "StickyHeaderFlowLayout"
