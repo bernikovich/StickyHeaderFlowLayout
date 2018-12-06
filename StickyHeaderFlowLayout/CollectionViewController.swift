@@ -28,7 +28,8 @@ class CollectionViewController: UICollectionViewController {
     
     // Setup Header.
     collectionView.register(CollectionParallaxHeader.self, forSupplementaryViewOfKind: CSStickyHeaderFlowLayout.parallaxHeaderIdentifier, withReuseIdentifier: "parallaxHeader")
-    layout?.parallaxHeaderReferenceSize = CGSize(width: self.view.frame.size.width, height: 100)
+    layout?.parallaxHeaderReferenceSize = CGSize(width: self.view.frame.size.width, height: 200)
+    layout?.parallaxHeaderMinimumReferenceSize = CGSize(width: self.view.frame.size.width, height: 160)
     
     // Setup Section Header.
     collectionView?.register(CollectionViewSectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "sectionHeader")
