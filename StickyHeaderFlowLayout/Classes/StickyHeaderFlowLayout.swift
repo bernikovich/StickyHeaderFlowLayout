@@ -5,10 +5,10 @@
 
 import UIKit
 
-class CSStickyHeaderFlowLayout: UICollectionViewFlowLayout {
+class StickyHeaderFlowLayout: UICollectionViewFlowLayout {
   
   class var parallaxHeaderIdentifier: String {
-    return "CSStickyHeaderParallexHeader"
+    return "StickyHeaderParallexHeader"
   }
   private static let kHeaderZIndex = 1024
   
@@ -44,7 +44,7 @@ class CSStickyHeaderFlowLayout: UICollectionViewFlowLayout {
   override func finalLayoutAttributesForDisappearingSupplementaryElement(ofKind elementKind: String, at elementIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
     if elementKind == type(of: self).parallaxHeaderIdentifier {
       let attribute = layoutAttributesForSupplementaryView(ofKind: elementKind, at: elementIndexPath)
-      if let attribute = attribute as? CSStickyHeaderFlowLayoutAttributes {
+      if let attribute = attribute as? StickyHeaderFlowLayoutAttributes {
         updateParallaxHeaderAttribute(attribute)
       }
       return attribute
@@ -57,7 +57,7 @@ class CSStickyHeaderFlowLayout: UICollectionViewFlowLayout {
   override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
     var attrubutes = super.layoutAttributesForSupplementaryView(ofKind: elementKind, at: indexPath)
     if attrubutes == nil && elementKind == type(of: self).parallaxHeaderIdentifier {
-      attrubutes = CSStickyHeaderFlowLayoutAttributes(forSupplementaryViewOfKind: elementKind, with: indexPath)
+      attrubutes = StickyHeaderFlowLayoutAttributes(forSupplementaryViewOfKind: elementKind, with: indexPath)
     }
     return attrubutes
   }
@@ -129,7 +129,7 @@ class CSStickyHeaderFlowLayout: UICollectionViewFlowLayout {
 
       // Create the attributes for the Parallex header.
       if visibleParallaxHeader && parallaxHeaderReferenceSize != .zero {
-        let currentAttribute = CSStickyHeaderFlowLayoutAttributes(forSupplementaryViewOfKind: type(of: self).parallaxHeaderIdentifier, with: IndexPath(index: 0))
+        let currentAttribute = StickyHeaderFlowLayoutAttributes(forSupplementaryViewOfKind: type(of: self).parallaxHeaderIdentifier, with: IndexPath(index: 0))
         updateParallaxHeaderAttribute(currentAttribute)
         allItems.append(currentAttribute)
       }
@@ -170,7 +170,7 @@ class CSStickyHeaderFlowLayout: UICollectionViewFlowLayout {
   }
   
   override open class var layoutAttributesClass: AnyClass {
-    return CSStickyHeaderFlowLayoutAttributes.self
+    return StickyHeaderFlowLayoutAttributes.self
   }
   
   func updateHeaderAttributes(_ attributes: UICollectionViewLayoutAttributes, lastCellAttributes: UICollectionViewLayoutAttributes) {
@@ -196,7 +196,7 @@ class CSStickyHeaderFlowLayout: UICollectionViewFlowLayout {
     attributes.frame = CGRect(origin: origin, size: attributes.frame.size)
   }
   
-  func updateParallaxHeaderAttribute(_ currentAttribute: CSStickyHeaderFlowLayoutAttributes) {
+  func updateParallaxHeaderAttribute(_ currentAttribute: StickyHeaderFlowLayoutAttributes) {
     guard let collectionView = collectionView else {
       return
     }
@@ -233,11 +233,11 @@ class CSStickyHeaderFlowLayout: UICollectionViewFlowLayout {
   
 }
 
-extension CSStickyHeaderFlowLayoutAttributes {
+extension StickyHeaderFlowLayoutAttributes {
   
   override internal var debugDescription: String {
     let indexPathString = "\(indexPath.section) \(indexPath.item)"
-    return "<CSStickyHeaderFlowLayoutAttributes: \(self)> indexPath: \(indexPathString) zIndex: \(zIndex) valid: \(isValid) kind: \(representedElementKind ?? "cell")"
+    return "<StickyHeaderFlowLayoutAttributes: \(self)> indexPath: \(indexPathString) zIndex: \(zIndex) valid: \(isValid) kind: \(representedElementKind ?? "cell")"
   }
   
   fileprivate var isValid: Bool {
@@ -248,7 +248,7 @@ extension CSStickyHeaderFlowLayoutAttributes {
       }
       return true
     case .supplementaryView:
-      if representedElementKind == CSStickyHeaderFlowLayout.parallaxHeaderIdentifier {
+      if representedElementKind == StickyHeaderFlowLayout.parallaxHeaderIdentifier {
         return true
       } else if zIndex < 1024 {
         return false
@@ -261,9 +261,9 @@ extension CSStickyHeaderFlowLayoutAttributes {
   
 }
 
-private extension CSStickyHeaderFlowLayout {
+private extension StickyHeaderFlowLayout {
   
-  func debugLayoutAttributes(_ layoutAttributes: [CSStickyHeaderFlowLayoutAttributes]) {
+  func debugLayoutAttributes(_ layoutAttributes: [StickyHeaderFlowLayoutAttributes]) {
     var hasInvalid = false
     layoutAttributes.forEach {
       if !$0.isValid {
@@ -272,7 +272,7 @@ private extension CSStickyHeaderFlowLayout {
     }
     
     if hasInvalid {
-      print("CSStickyHeaderFlowLayout: \(layoutAttributes)")
+      print("StickyHeaderFlowLayout: \(layoutAttributes)")
     }
   }
   

@@ -10,8 +10,8 @@
 		96527ACF21B9265D00F6B458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96527ACE21B9265D00F6B458 /* AppDelegate.swift */; };
 		96527AD621B9265E00F6B458 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96527AD521B9265E00F6B458 /* Assets.xcassets */; };
 		96527AD921B9265E00F6B458 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96527AD721B9265E00F6B458 /* LaunchScreen.storyboard */; };
-		96527AE421B9282600F6B458 /* CSStickyHeaderFlowLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96527AE321B9282600F6B458 /* CSStickyHeaderFlowLayoutAttributes.swift */; };
-		96527AE621B928A500F6B458 /* CSStickyHeaderFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96527AE521B928A500F6B458 /* CSStickyHeaderFlowLayout.swift */; };
+		96527AE421B9282600F6B458 /* StickyHeaderFlowLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96527AE321B9282600F6B458 /* StickyHeaderFlowLayoutAttributes.swift */; };
+		96527AE621B928A500F6B458 /* StickyHeaderFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96527AE521B928A500F6B458 /* StickyHeaderFlowLayout.swift */; };
 		96527AE821B9673700F6B458 /* CollectionParallaxHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96527AE721B9673700F6B458 /* CollectionParallaxHeader.swift */; };
 		96527AEA21B967C500F6B458 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96527AE921B967C500F6B458 /* CollectionViewCell.swift */; };
 		96527AEC21B9680A00F6B458 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96527AEB21B9680A00F6B458 /* CollectionViewController.swift */; };
@@ -24,8 +24,8 @@
 		96527AD521B9265E00F6B458 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96527AD821B9265E00F6B458 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		96527ADA21B9265E00F6B458 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		96527AE321B9282600F6B458 /* CSStickyHeaderFlowLayoutAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSStickyHeaderFlowLayoutAttributes.swift; sourceTree = "<group>"; };
-		96527AE521B928A500F6B458 /* CSStickyHeaderFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSStickyHeaderFlowLayout.swift; sourceTree = "<group>"; };
+		96527AE321B9282600F6B458 /* StickyHeaderFlowLayoutAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyHeaderFlowLayoutAttributes.swift; sourceTree = "<group>"; };
+		96527AE521B928A500F6B458 /* StickyHeaderFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyHeaderFlowLayout.swift; sourceTree = "<group>"; };
 		96527AE721B9673700F6B458 /* CollectionParallaxHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionParallaxHeader.swift; sourceTree = "<group>"; };
 		96527AE921B967C500F6B458 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		96527AEB21B9680A00F6B458 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
@@ -80,8 +80,8 @@
 		96527AE221B926C500F6B458 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				96527AE321B9282600F6B458 /* CSStickyHeaderFlowLayoutAttributes.swift */,
-				96527AE521B928A500F6B458 /* CSStickyHeaderFlowLayout.swift */,
+				96527AE321B9282600F6B458 /* StickyHeaderFlowLayoutAttributes.swift */,
+				96527AE521B928A500F6B458 /* StickyHeaderFlowLayout.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -159,9 +159,9 @@
 				96527AE821B9673700F6B458 /* CollectionParallaxHeader.swift in Sources */,
 				96527AEA21B967C500F6B458 /* CollectionViewCell.swift in Sources */,
 				96527AEE21B968E500F6B458 /* CollectionViewSectionHeader.swift in Sources */,
-				96527AE621B928A500F6B458 /* CSStickyHeaderFlowLayout.swift in Sources */,
+				96527AE621B928A500F6B458 /* StickyHeaderFlowLayout.swift in Sources */,
 				96527AEC21B9680A00F6B458 /* CollectionViewController.swift in Sources */,
-				96527AE421B9282600F6B458 /* CSStickyHeaderFlowLayoutAttributes.swift in Sources */,
+				96527AE421B9282600F6B458 /* StickyHeaderFlowLayoutAttributes.swift in Sources */,
 				96527ACF21B9265D00F6B458 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

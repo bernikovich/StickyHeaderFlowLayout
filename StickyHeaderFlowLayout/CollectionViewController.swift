@@ -1,7 +1,4 @@
 //
-//  CollectionViewController.swift
-//  StickyHeaderFlowLayout
-//
 //  Created by Tsimur Bernikovich on 12/6/18.
 //  Copyright © 2018 Tsimur Bernikovich. All rights reserved.
 //
@@ -10,10 +7,10 @@ import UIKit
 
 class CollectionViewController: UICollectionViewController {
   
-  var items : [String] = ["CSStickyHeaderFlowLayout basic example", "Example to initialize in code", "As well as in Swift", "Please Enjoy"]
+  var items : [String] = ["StickyHeaderFlowLayout basic example", "Example to initialize in code", "Please Enjoy"]
   
-  private var layout : CSStickyHeaderFlowLayout? {
-    return self.collectionView?.collectionViewLayout as? CSStickyHeaderFlowLayout
+  private var layout : StickyHeaderFlowLayout? {
+    return self.collectionView?.collectionViewLayout as? StickyHeaderFlowLayout
   }
   
   override func viewDidLoad() {
@@ -27,7 +24,7 @@ class CollectionViewController: UICollectionViewController {
     layout?.itemSize = CGSize(width: view.frame.size.width, height: 44)
     
     // Setup Header.
-    collectionView.register(CollectionParallaxHeader.self, forSupplementaryViewOfKind: CSStickyHeaderFlowLayout.parallaxHeaderIdentifier, withReuseIdentifier: "parallaxHeader")
+    collectionView.register(CollectionParallaxHeader.self, forSupplementaryViewOfKind: StickyHeaderFlowLayout.parallaxHeaderIdentifier, withReuseIdentifier: "parallaxHeader")
     layout?.parallaxHeaderReferenceSize = CGSize(width: self.view.frame.size.width, height: 200)
     layout?.parallaxHeaderMinimumReferenceSize = CGSize(width: self.view.frame.size.width, height: 160)
     
@@ -49,7 +46,7 @@ class CollectionViewController: UICollectionViewController {
   
   // Parallax Header.
   override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-    if kind == CSStickyHeaderFlowLayout.parallaxHeaderIdentifier {
+    if kind == StickyHeaderFlowLayout.parallaxHeaderIdentifier {
       let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "parallaxHeader", for: indexPath)
       return view
     } else if kind == UICollectionView.elementKindSectionHeader {

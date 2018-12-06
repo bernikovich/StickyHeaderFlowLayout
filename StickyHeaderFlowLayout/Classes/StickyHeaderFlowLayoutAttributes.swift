@@ -5,13 +5,13 @@
 
 import UIKit
 
-class CSStickyHeaderFlowLayoutAttributes: UICollectionViewLayoutAttributes {
+class StickyHeaderFlowLayoutAttributes: UICollectionViewLayoutAttributes {
   
   var progressiveness: CGFloat = 0
   
   override func copy(with zone: NSZone? = nil) -> Any {
     let copy = super.copy(with: zone)
-    if let copy = copy as? CSStickyHeaderFlowLayoutAttributes {
+    if let copy = copy as? StickyHeaderFlowLayoutAttributes {
       copy.progressiveness = progressiveness
     }
     return copy
