@@ -1,5 +1,5 @@
 <p align="center">
-	<img src="/Resources/logo.svg" alt="StickyHeaderFlowLayout" width="150">
+	<img src="/Resources/logo.svg" alt="StickyHeaderFlowLayout" width="105">
   <br/>
   <h1 align="center">StickyHeaderFlowLayout</h1>
 </p>
