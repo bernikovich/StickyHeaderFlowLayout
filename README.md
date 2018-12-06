@@ -1,2 +1,7 @@
-# StickyHeaderFlowLayout
-UICollectionView replacement of UITableView. Do even more like Parallax Header, Sticky Section Header. Made for iOS 7. https://medium.com/ios-apprentice/43e…
+<p align="center">
+	<img src="/Resources/logo.svg" alt="StickyHeaderFlowLayout" width="180">
+  <br/>
+  <h1 align="center">StickyHeaderFlowLayout</h1>
+</p>
+
+UICollectionView replacement of UITableView. Do even more like Parallax Header, Sticky Section Header.
