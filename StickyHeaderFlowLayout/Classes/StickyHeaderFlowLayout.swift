@@ -10,7 +10,7 @@ class StickyHeaderFlowLayout: UICollectionViewFlowLayout {
   class var parallaxHeaderIdentifier: String {
     return "StickyHeaderParallexHeader"
   }
-  private static let kHeaderZIndex = 1024
+  private static let headerZIndex = 1024
   
   var parallaxHeaderReferenceSize: CGSize = .zero
   var parallaxHeaderMinimumReferenceSize: CGSize = .zero {
@@ -63,97 +63,96 @@ class StickyHeaderFlowLayout: UICollectionViewFlowLayout {
   }
   
   override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-    if collectionView?.dataSource != nil {
-      // The rect should compensate the header size
-      var adjustedRect = rect
-      adjustedRect.origin.y -= self.parallaxHeaderReferenceSize.height
-      
-      var allItems: [UICollectionViewLayoutAttributes] = []
-      // Perform a deep copy of the attributes returned from super.
-      if let originalAttributes = super.layoutAttributesForElements(in: adjustedRect) {
-        for originalAttribute in originalAttributes {
-          if let copy = originalAttribute.copy() as? UICollectionViewLayoutAttributes {
-            allItems.append(copy)
-          }
-        }
-      }
-      
-      var headers: [Int: UICollectionViewLayoutAttributes] = [:]
-      var lastCells: [Int: UICollectionViewLayoutAttributes] = [:]
-      var visibleParallaxHeader = false
-      
-      for item in allItems {
-        let attributes = item
-        var frame = attributes.frame
-        frame.origin.y += parallaxHeaderReferenceSize.height
-        attributes.frame = frame
-        
-        let indexPath = attributes.indexPath
-        let isHeader = attributes.representedElementKind == UICollectionView.elementKindSectionHeader
-        let isFooter = attributes.representedElementKind == UICollectionView.elementKindSectionFooter
-        
-        if isHeader {
-          headers[indexPath.section] = attributes
-        } else if isFooter {
-          // Not implemeneted.
-        } else {
-          // Get the bottom most cell of that section.
-          if let currentAttribute = lastCells[indexPath.section] {
-            if indexPath.row > currentAttribute.indexPath.row {
-              lastCells[indexPath.section] = attributes
-            }
-          } else {
-            lastCells[indexPath.section] = attributes
-          }
-          
-          if indexPath.item == 0 && indexPath.section == 0 {
-            visibleParallaxHeader = true
-          }
-        }
-        
-        if isHeader {
-          attributes.zIndex = type(of: self).kHeaderZIndex
-        } else {
-          // For iOS 7.0, the cell zIndex should be above sticky section header.
-          attributes.zIndex = 1
-        }
-      }
-      
-      if rect.minY <= 0 {
-        visibleParallaxHeader = true
-      }
-      
-      if parallaxHeaderAlwaysOnTop {
-        visibleParallaxHeader = true
-      }
-
-      // Create the attributes for the Parallex header.
-      if visibleParallaxHeader && parallaxHeaderReferenceSize != .zero {
-        let currentAttribute = StickyHeaderFlowLayoutAttributes(forSupplementaryViewOfKind: type(of: self).parallaxHeaderIdentifier, with: IndexPath(index: 0))
-        updateParallaxHeaderAttribute(currentAttribute)
-        allItems.append(currentAttribute)
-      }
-      
-      if !disableStickyHeaders {
-        lastCells.forEach {
-          let indexPath = $0.value.indexPath
-          let indexPathKey = indexPath.section
-          
-          if let header = headers[indexPathKey] {
-            if header.frame.size != .zero {
-              updateHeaderAttributes(header, lastCellAttributes: $0.value)
-            }
-          } else if let header = layoutAttributesForSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, at: IndexPath(item: 0, section: indexPath.section)) {
-            if header.frame.size != .zero {
-              allItems.append(header)
-            }
-          }
-        }
-      }
-      return allItems
-    } else {
+    guard collectionView?.dataSource != nil else {
       return nil
     }
+    
+    // The rect should compensate the header size
+    var adjustedRect = rect
+    adjustedRect.origin.y -= self.parallaxHeaderReferenceSize.height
+    
+    var allItems: [UICollectionViewLayoutAttributes] = []
+    // Perform a deep copy of the attributes returned from super.
+    if let originalAttributes = super.layoutAttributesForElements(in: adjustedRect) {
+      allItems = originalAttributes.compactMap {
+        $0.copy() as? UICollectionViewLayoutAttributes
+      }
+    }
+    
+    var headers: [Int: UICollectionViewLayoutAttributes] = [:]
+    var lastCells: [Int: UICollectionViewLayoutAttributes] = [:]
+    var visibleParallaxHeader = false
+    
+    for item in allItems {
+      let attributes = item
+      var frame = attributes.frame
+      frame.origin.y += parallaxHeaderReferenceSize.height
+      attributes.frame = frame
+      
+      let indexPath = attributes.indexPath
+      let isHeader = attributes.representedElementKind == UICollectionView.elementKindSectionHeader
+      let isFooter = attributes.representedElementKind == UICollectionView.elementKindSectionFooter
+      
+      if isHeader {
+        headers[indexPath.section] = attributes
+      } else if isFooter {
+        // Not implemeneted.
+      } else {
+        // Get the bottom most cell of that section.
+        if let currentAttribute = lastCells[indexPath.section] {
+          if indexPath.row > currentAttribute.indexPath.row {
+            lastCells[indexPath.section] = attributes
+          }
+        } else {
+          lastCells[indexPath.section] = attributes
+        }
+        
+        if indexPath.item == 0 && indexPath.section == 0 {
+          visibleParallaxHeader = true
+        }
+      }
+      
+      if isHeader {
+        attributes.zIndex = type(of: self).headerZIndex
+      } else {
+        // For iOS 7.0, the cell zIndex should be above sticky section header.
+        attributes.zIndex = 1
+      }
+    }
+    
+    if rect.minY <= 0 {
+      visibleParallaxHeader = true
+    }
+    
+    if parallaxHeaderAlwaysOnTop {
+      visibleParallaxHeader = true
+    }
+    
+    // Create the attributes for the Parallex header.
+    if visibleParallaxHeader && parallaxHeaderReferenceSize != .zero {
+      let currentAttribute = StickyHeaderFlowLayoutAttributes(forSupplementaryViewOfKind: type(of: self).parallaxHeaderIdentifier, with: IndexPath(index: 0))
+      updateParallaxHeaderAttribute(currentAttribute)
+      allItems.append(currentAttribute)
+    }
+    
+    if !disableStickyHeaders {
+      lastCells.forEach {
+        let indexPath = $0.value.indexPath
+        let indexPathKey = indexPath.section
+        
+        if let header = headers[indexPathKey] {
+          if header.frame.size != .zero {
+            updateHeaderAttributes(header, lastCellAttributes: $0.value)
+          }
+        } else if let header = layoutAttributesForSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, at: IndexPath(item: 0, section: indexPath.section)) {
+          if header.frame.size != .zero {
+            allItems.append(header)
+          }
+        }
+      }
+    }
+    
+    return allItems
   }
   
   override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
@@ -179,7 +178,7 @@ class StickyHeaderFlowLayout: UICollectionViewFlowLayout {
     }
     
     let currentBounds = collectionView.bounds
-    attributes.zIndex = type(of: self).kHeaderZIndex
+    attributes.zIndex = type(of: self).headerZIndex
     attributes.isHidden = false
     
     var origin = attributes.frame.origin
@@ -190,9 +189,7 @@ class StickyHeaderFlowLayout: UICollectionViewFlowLayout {
       y += parallaxHeaderMinimumReferenceSize.height
     }
     
-    let maxY = min(max(y, attributes.frame.origin.y), sectionMaxY)
-    origin.y = maxY
-    
+    origin.y = min(max(y, attributes.frame.origin.y), sectionMaxY)
     attributes.frame = CGRect(origin: origin, size: attributes.frame.size)
   }
   
