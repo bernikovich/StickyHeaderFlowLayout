@@ -1,9 +1,9 @@
 Pod::Spec.new do |spec|
   spec.name          = "StickyHeaderFlowLayout"
-  spec.version       = "0.9"
+  spec.version       = "0.9.1"
   spec.summary       = "Sticky headers for UICollectionView written in pure Swift"
   spec.homepage      = "https://github.com/bernikowich/StickyHeaderFlowLayout"
-  spec.license       = { :type => 'MIT' }
+  spec.license       = { :type => "MIT" }
   spec.author        = { "Timur Bernikowich" => "bernikowich@icloud.com" }
   spec.platform      = :ios, "9.0"
   spec.swift_version = "4.2"
