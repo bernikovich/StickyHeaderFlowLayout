@@ -5,10 +5,10 @@ Pod::Spec.new do |spec|
   spec.homepage      = "https://github.com/bernikowich/StickyHeaderFlowLayout"
   spec.license       = { :type => 'MIT' }
   spec.author        = { "Timur Bernikowich" => "bernikowich@icloud.com" }
-  spec.platform      = :ios, "8.0"
+  spec.platform      = :ios, "9.0"
   spec.swift_version = "4.2"
   spec.framework     = "UIKit"
-  spec.source        = { :git => "https://github.com/bernikowich/StickyHeaderFlowLayout.git", :tag => "#{s.version}" }
+  spec.source        = { :git => "https://github.com/bernikowich/StickyHeaderFlowLayout.git", :tag => "#{spec.version}" }
   spec.source_files  = "StickyHeaderFlowLayout/Classes/*.{h,m}"
   spec.module_name   = "StickyHeaderFlowLayout"
 end
