@@ -2,7 +2,7 @@
 	<img src="/Resources/logo.svg" alt="StickyHeaderFlowLayout" width="105">
   <br/>
   <h3 align="center">StickyHeaderFlowLayout</h2>
-  <p align="center">Sticky UICollectionView header.</p>
+  <p align="center">Sticky headers for UICollectionView written in pure Swift</p>
   <h1></h1>
   <br/>
 </p>
