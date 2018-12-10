@@ -28,3 +28,9 @@ end
 To use this library in your project manually you may:
 
 Just drag `StickyHeaderFlowLayout.swift` and `StickyHeaderFlowLayoutAttributes.swift` to the project tree
+
+## Usage
+
+#### Sample project
+
+Repository contains small sample project which shows basic integration.
