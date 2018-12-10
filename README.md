@@ -7,6 +7,8 @@
   <br/>
 </p>
 
+Based on [CSStickyHeaderFlowLayout](https://github.com/CSStickyHeaderFlowLayout/CSStickyHeaderFlowLayout). `StickyHeaderFlowLayout` makes it easy to create sticky headers in `UICollectionView`.
+
 ## Integration
 
 #### CocoaPods
