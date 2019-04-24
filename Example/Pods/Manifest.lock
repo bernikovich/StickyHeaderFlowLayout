@@ -1,0 +1,16 @@
+PODS:
+  - StickyHeaderFlowLayout (0.2.0)
+
+DEPENDENCIES:
+  - StickyHeaderFlowLayout (from `../`)
+
+EXTERNAL SOURCES:
+  StickyHeaderFlowLayout:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  StickyHeaderFlowLayout: ea657242697dd7488c31df74343688ef6d08e4ec
+
+PODFILE CHECKSUM: 67487ba5ff9f8b7257b17b91ed243eda8a5a2ef6
+
+COCOAPODS: 1.7.0.beta.3

@@ -5,29 +5,29 @@
 
 import UIKit
 
-class StickyHeaderFlowLayout: UICollectionViewFlowLayout {
+open class StickyHeaderFlowLayout: UICollectionViewFlowLayout {
   
-  class var parallaxHeaderIdentifier: String {
+  open class var parallaxHeaderIdentifier: String {
     return "StickyHeaderParallexHeader"
   }
   private static let headerZIndex = 1024
   
-  var parallaxHeaderReferenceSize: CGSize = .zero
-  var parallaxHeaderMinimumReferenceSize: CGSize = .zero {
+  open var parallaxHeaderReferenceSize: CGSize = .zero
+  open var parallaxHeaderMinimumReferenceSize: CGSize = .zero {
     didSet {
       invalidateLayout()
     }
   }
   
-  var parallaxHeaderAlwaysOnTop = false
-  var disableStickyHeaders = false
-  var disableStretching = false
+  open var parallaxHeaderAlwaysOnTop = false
+  open var disableStickyHeaders = false
+  open var disableStretching = false
   
-  override func prepare() {
+  open override func prepare() {
     super.prepare()
   }
   
-  override func initialLayoutAttributesForAppearingSupplementaryElement(ofKind elementKind: String, at elementIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+  open override func initialLayoutAttributesForAppearingSupplementaryElement(ofKind elementKind: String, at elementIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
     let attributes = super.initialLayoutAttributesForAppearingSupplementaryElement(ofKind: elementKind, at: elementIndexPath)
     if elementKind == type(of: self).parallaxHeaderIdentifier {
       // Sticky header do not need to offset.
@@ -41,7 +41,7 @@ class StickyHeaderFlowLayout: UICollectionViewFlowLayout {
     return attributes
   }
   
-  override func finalLayoutAttributesForDisappearingSupplementaryElement(ofKind elementKind: String, at elementIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+  open override func finalLayoutAttributesForDisappearingSupplementaryElement(ofKind elementKind: String, at elementIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
     if elementKind == type(of: self).parallaxHeaderIdentifier {
       let attribute = layoutAttributesForSupplementaryView(ofKind: elementKind, at: elementIndexPath)
       if let attribute = attribute as? StickyHeaderFlowLayoutAttributes {
@@ -54,7 +54,7 @@ class StickyHeaderFlowLayout: UICollectionViewFlowLayout {
     return nil
   }
   
-  override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+  open override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
     var attrubutes = super.layoutAttributesForSupplementaryView(ofKind: elementKind, at: indexPath)
     if attrubutes == nil && elementKind == type(of: self).parallaxHeaderIdentifier {
       attrubutes = StickyHeaderFlowLayoutAttributes(forSupplementaryViewOfKind: elementKind, with: indexPath)
@@ -62,7 +62,7 @@ class StickyHeaderFlowLayout: UICollectionViewFlowLayout {
     return attrubutes
   }
   
-  override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+  open override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
     guard collectionView?.dataSource != nil else {
       return nil
     }
@@ -155,7 +155,7 @@ class StickyHeaderFlowLayout: UICollectionViewFlowLayout {
     return allItems
   }
   
-  override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+  open override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
     let attributes = super.layoutAttributesForItem(at: indexPath)?.copy() as? UICollectionViewLayoutAttributes
     if var frame = attributes?.frame {
       frame.origin.y += parallaxHeaderReferenceSize.height
@@ -164,15 +164,15 @@ class StickyHeaderFlowLayout: UICollectionViewFlowLayout {
     return attributes
   }
   
-  override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+  open override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
     return true
   }
   
-  override open class var layoutAttributesClass: AnyClass {
+  open override class var layoutAttributesClass: AnyClass {
     return StickyHeaderFlowLayoutAttributes.self
   }
   
-  func updateHeaderAttributes(_ attributes: UICollectionViewLayoutAttributes, lastCellAttributes: UICollectionViewLayoutAttributes) {
+  private func updateHeaderAttributes(_ attributes: UICollectionViewLayoutAttributes, lastCellAttributes: UICollectionViewLayoutAttributes) {
     guard let collectionView = collectionView else {
       return
     }
@@ -193,7 +193,7 @@ class StickyHeaderFlowLayout: UICollectionViewFlowLayout {
     attributes.frame = CGRect(origin: origin, size: attributes.frame.size)
   }
   
-  func updateParallaxHeaderAttribute(_ currentAttribute: StickyHeaderFlowLayoutAttributes) {
+  private func updateParallaxHeaderAttribute(_ currentAttribute: StickyHeaderFlowLayoutAttributes) {
     guard let collectionView = collectionView else {
       return
     }

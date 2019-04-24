@@ -1,14 +1,14 @@
 Pod::Spec.new do |spec|
-  spec.name          = "StickyHeaderFlowLayout"
-  spec.version       = "0.9.3"
-  spec.summary       = "Sticky headers for UICollectionView written in pure Swift"
-  spec.homepage      = "https://github.com/bernikowich/StickyHeaderFlowLayout"
-  spec.license       = { :type => "MIT" }
-  spec.author        = { "Timur Bernikowich" => "bernikowich@icloud.com" }
-  spec.platform      = :ios, "9.0"
-  spec.swift_version = "4.2"
-  spec.framework     = "UIKit"
-  spec.source        = { :git => "https://github.com/bernikowich/StickyHeaderFlowLayout.git", :tag => spec.version.to_s }
-  spec.source_files  = "StickyHeaderFlowLayout/Classes/*.swift"
-  spec.module_name   = "StickyHeaderFlowLayout"
+    spec.name          = "StickyHeaderFlowLayout"
+    spec.version       = "0.2.0"
+    spec.summary       = "Sticky headers for UICollectionView written in pure Swift (based on CSStickyHeaderFlowLayout)"
+    spec.homepage      = "https://github.com/bernikovich/StickyHeaderFlowLayout"
+    spec.license       = { :type => "MIT", :file => "LICENSE" }
+    spec.author        = { "Timur Bernikovich" => "bernikowich@icloud.com" }
+    spec.platform      = :ios, "9.0"
+    spec.swift_version = "5.0"
+    spec.framework     = "UIKit"
+    spec.source        = { :git => "https://github.com/bernikovich/StickyHeaderFlowLayout.git", :tag => spec.version.to_s }
+    spec.source_files  = "StickyHeaderFlowLayout/Classes/**/*.swift"
+    spec.module_name   = "StickyHeaderFlowLayout"
 end

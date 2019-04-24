@@ -1,0 +1,6 @@
+framework module StickyHeaderFlowLayout {
+  umbrella header "StickyHeaderFlowLayout-umbrella.h"
+
+  export *
+  module * { export * }
+}
