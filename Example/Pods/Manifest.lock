@@ -1,5 +1,5 @@
 PODS:
-  - StickyHeaderFlowLayout (0.2.0)
+  - StickyHeaderFlowLayout (0.9.4)
 
 DEPENDENCIES:
   - StickyHeaderFlowLayout (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  StickyHeaderFlowLayout: ea657242697dd7488c31df74343688ef6d08e4ec
+  StickyHeaderFlowLayout: 4727f28b5ba0db05bd18a98ce64f5c4c72f661ff
 
 PODFILE CHECKSUM: 67487ba5ff9f8b7257b17b91ed243eda8a5a2ef6
 
