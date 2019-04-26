@@ -61,3 +61,7 @@ override func collectionView(_ collectionView: UICollectionView, viewForSuppleme
      ...
 }
 ```
+
+## License
+
+`StickyHeaderFlowLayout` is released under the MIT license. See `LICENSE` for details.
