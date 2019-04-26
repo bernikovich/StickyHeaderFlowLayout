@@ -34,3 +34,30 @@ Just drag `StickyHeaderFlowLayout.swift` and `StickyHeaderFlowLayoutAttributes.s
 #### Sample project
 
 Repository contains small sample project which shows basic integration.
+
+#### Basic idea
+
+1. Create layout and collection view
+```swift
+let layout = StickyHeaderFlowLayout()
+let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+```
+
+2. Setup sticky header
+```swift
+collectionView.register(CollectionParallaxHeader.self, forSupplementaryViewOfKind: StickyHeaderFlowLayout.parallaxHeaderIdentifier, withReuseIdentifier: "parallaxHeader")
+layout.parallaxHeaderReferenceSize = CGSize(width: view.frame.size.width, height: 200)
+layout.parallaxHeaderMinimumReferenceSize = CGSize(width: view.frame.size.width, height: 160)
+```
+
+3. Return correct view in `viewForSupplementaryElementOfKind` function
+```swift
+override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+     if kind == StickyHeaderFlowLayout.parallaxHeaderIdentifier {
+         return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "parallaxHeader", for: indexPath)
+     }
+     
+     // Other views.
+     ...
+}
+```
